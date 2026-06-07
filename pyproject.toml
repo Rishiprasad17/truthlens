@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "truthlens"
+version = "1.0.0"
+description = "The trust and evaluation layer for AI systems."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "TruthLens Contributors", email = "truthlens@yourorg.com" }]
+keywords = ["llm", "evaluation", "hallucination", "rag", "ai", "trustworthiness", "groundedness"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+requires-python = ">=3.10"
+dependencies = [
+    "httpx>=0.25.0",
+    "pydantic>=2.0.0",
+    "fastapi>=0.110.0",
+    "uvicorn[standard]>=0.27.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "black>=23.0",
+    "ruff>=0.1.0",
+    "build>=0.10",
+    "twine>=4.0",
+]
+
+[project.scripts]
+truthlens = "truthlens.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/YOURUSERNAME/truthlens"
+Repository = "https://github.com/YOURUSERNAME/truthlens"
+Issues = "https://github.com/YOURUSERNAME/truthlens/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["truthlens*", "api*", "proxy*"]
+
+[tool.pytest.ini_options]
+markers = ["integration: requires Ollama running locally"]

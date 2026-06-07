@@ -1,0 +1,11 @@
+# Core
+httpx>=0.25.0
+pydantic>=2.0.0
+
+# API server
+fastapi>=0.110.0
+uvicorn[standard]>=0.27.0
+
+# Dev
+pytest>=7.0
+pytest-asyncio>=0.21
