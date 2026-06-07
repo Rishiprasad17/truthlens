@@ -13,7 +13,7 @@ TruthLens automatically scores any AI response for **groundedness**, **faithfuln
 ## Install
 
 ```bash
-pip install truthlens
+pip install truthlens-ai
 ```
 
 Requires [Ollama](https://ollama.ai) for local evaluation (free), or any LLM API key.
@@ -58,13 +58,13 @@ tl = TruthLens(provider="ollama",     model="llama3")
 
 ## What Gets Scored
 
-| Metric | Description |
-|--------|-------------|
-| **Trust Score** | Composite 0–100 |
-| **Groundedness** | How strongly the answer is backed by sources |
-| **Faithfulness** | Whether the answer accurately reflects sources |
-| **Citation Accuracy** | Whether references are valid |
-| **Hallucination Risk** | Low / Medium / High |
+| Metric                 | Description                                    |
+| ---------------------- | ---------------------------------------------- |
+| **Trust Score**        | Composite 0–100                                |
+| **Groundedness**       | How strongly the answer is backed by sources   |
+| **Faithfulness**       | Whether the answer accurately reflects sources |
+| **Citation Accuracy**  | Whether references are valid                   |
+| **Hallucination Risk** | Low / Medium / High                            |
 
 ---
 
@@ -115,17 +115,20 @@ truthlens proxy
 ```
 
 Then from any language:
+
 ```javascript
 const r = await fetch("http://localhost:8001/chat", {
   method: "POST",
   body: JSON.stringify({
-    provider: "openai", model: "gpt-4o", api_key: "sk-...",
+    provider: "openai",
+    model: "gpt-4o",
+    api_key: "sk-...",
     messages: [{ role: "user", content: "Who created Python?" }],
-    sources: ["Python was created by Guido van Rossum in 1991."]
-  })
-})
-const data = await r.json()
-console.log(data.trust_score)  // 95.0
+    sources: ["Python was created by Guido van Rossum in 1991."],
+  }),
+});
+const data = await r.json();
+console.log(data.trust_score); // 95.0
 ```
 
 ---
@@ -157,6 +160,7 @@ truthlens benchmark --sample             # run built-in benchmark
 TruthLens is designed to support AI trustworthiness research.
 
 **Research questions:**
+
 - RQ1: Can multi-metric evaluation predict factual reliability better than single metrics?
 - RQ2: Does claim-level verification correlate with human judgments?
 - RQ3: How does hallucination rate vary across domains?

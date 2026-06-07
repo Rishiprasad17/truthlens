@@ -3,12 +3,12 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "truthlens"
+name = "truthlens-ai"
 version = "1.0.0"
 description = "The trust and evaluation layer for AI systems."
 readme = "README.md"
 license = { text = "MIT" }
-authors = [{ name = "TruthLens Contributors", email = "truthlens@yourorg.com" }]
+authors = [{ name = "Rishi Prasad Vagu", email = "rishi.vagu@gmail.com" }]
 keywords = ["llm", "evaluation", "hallucination", "rag", "ai", "trustworthiness", "groundedness"]
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -42,9 +42,9 @@ dev = [
 truthlens = "truthlens.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/YOURUSERNAME/truthlens"
-Repository = "https://github.com/YOURUSERNAME/truthlens"
-Issues = "https://github.com/YOURUSERNAME/truthlens/issues"
+Homepage = "https://github.com/Rishiprasad17/truthlens"
+Repository = "https://github.com/Rishiprasad17/truthlens"
+Issues = "https://github.com/Rishiprasad17/truthlens/issues"
 
 [tool.setuptools.packages.find]
 where = ["."]
