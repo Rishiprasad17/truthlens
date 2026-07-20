@@ -1,26 +1,34 @@
-# TruthLens
+<div align="center">
 
-> **The trust and evaluation layer for AI systems.**
+# 🔍 TruthLens
 
-[![PyPI version](https://img.shields.io/badge/pypi-v1.0.0-blue)](https://pypi.org/project/truthlens)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue)](https://python.org)
-[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+### The trust and evaluation layer for AI systems
 
-TruthLens automatically scores any AI response for **groundedness**, **faithfulness**, **hallucination risk**, and overall **trustworthiness** — in 2 lines of code.
+TruthLens automatically scores any AI response for groundedness, faithfulness,
+hallucination risk, and overall trustworthiness — in 2 lines of code.
+
+[![PyPI](https://img.shields.io/pypi/v/truthlens-ai?color=blue)](https://pypi.org/project/truthlens-ai/)
+[![Python](https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![License](https://img.shields.io/badge/License-MIT-green)](#-license)
+[![Providers](https://img.shields.io/badge/Providers-OpenAI%20%7C%20Anthropic%20%7C%20Gemini%20%7C%20Ollama-blueviolet)](#-supported-providers)
+
+**[Install](#-install) · [Quick Start](#-quick-start) · [What Gets Scored](#-what-gets-scored) · [Dashboard](#-dashboard) · [CLI](#-cli) · [Research](#-research)**
+
+</div>
 
 ---
 
-## Install
+## 📦 Install
 
 ```bash
 pip install truthlens-ai
 ```
 
-Requires [Ollama](https://ollama.ai) for local evaluation (free), or any LLM API key.
+> Requires [Ollama](https://ollama.ai) for local evaluation (free), or any LLM API key.
 
 ---
 
-## Quick Start
+## 🚀 Quick Start
 
 ```python
 from truthlens import TruthLens
@@ -41,7 +49,7 @@ print(response.summary())
 
 ---
 
-## Supported Providers
+## 🔌 Supported providers
 
 ```python
 # OpenAI
@@ -56,19 +64,19 @@ tl = TruthLens(provider="ollama",     model="llama3")
 
 ---
 
-## What Gets Scored
+## 📊 What gets scored
 
-| Metric                 | Description                                    |
-| ---------------------- | ---------------------------------------------- |
-| **Trust Score**        | Composite 0–100                                |
-| **Groundedness**       | How strongly the answer is backed by sources   |
-| **Faithfulness**       | Whether the answer accurately reflects sources |
-| **Citation Accuracy**  | Whether references are valid                   |
-| **Hallucination Risk** | Low / Medium / High                            |
+| Metric | Description |
+|---|---|
+| **Trust Score** | Composite 0–100 |
+| **Groundedness** | How strongly the answer is backed by sources |
+| **Faithfulness** | Whether the answer accurately reflects sources |
+| **Citation Accuracy** | Whether references are valid |
+| **Hallucination Risk** | Low / Medium / High |
 
 ---
 
-## Claim-Level Verification
+## 🔬 Claim-level verification
 
 ```python
 tl = TruthLens(provider="ollama", model="llama3", include_claims=True)
@@ -82,7 +90,7 @@ for claim in response.claims:
 
 ---
 
-## RAG Evaluation
+## 📚 RAG evaluation
 
 ```python
 from truthlens import evaluate_rag
@@ -97,7 +105,7 @@ print(report.rag_score)  # 90.1
 
 ---
 
-## Benchmark Runner
+## 🏆 Benchmark runner
 
 ```python
 from truthlens import run_benchmark, generate_sample_dataset
@@ -108,7 +116,7 @@ print(report.stats.avg_trust_score)  # 87.3
 
 ---
 
-## REST API (Proxy Server)
+## 🌐 REST API (proxy server)
 
 ```bash
 truthlens proxy
@@ -133,7 +141,7 @@ console.log(data.trust_score); // 95.0
 
 ---
 
-## Dashboard
+## 🖥️ Dashboard
 
 ```bash
 truthlens start
@@ -143,7 +151,7 @@ Opens at `http://localhost:5173` — 10 pages covering evaluate, claims, RAG, ag
 
 ---
 
-## CLI
+## 🧰 CLI
 
 ```bash
 truthlens setup                          # check dependencies
@@ -155,50 +163,50 @@ truthlens benchmark --sample             # run built-in benchmark
 
 ---
 
-## Research
+## 📄 Research
 
 TruthLens is designed to support AI trustworthiness research.
 
 **Research questions:**
 
-- RQ1: Can multi-metric evaluation predict factual reliability better than single metrics?
-- RQ2: Does claim-level verification correlate with human judgments?
-- RQ3: How does hallucination rate vary across domains?
-- RQ4: Does model size correlate with trust scores?
+- **RQ1:** Can multi-metric evaluation predict factual reliability better than single metrics?
+- **RQ2:** Does claim-level verification correlate with human judgments?
+- **RQ3:** How does hallucination rate vary across domains?
+- **RQ4:** Does model size correlate with trust scores?
 
 See [`paper/PAPER.md`](paper/PAPER.md) for the research paper draft.
 
 ---
 
-## Project Structure
+## 📁 Project structure
 
 ```
 truthlens/
-├── truthlens/          ← Core evaluation library
-│   ├── evaluator.py    ← 5-metric trust scoring
-│   ├── claims.py       ← Claim-level verification
-│   ├── rag.py          ← RAG pipeline evaluation
-│   ├── agent.py        ← Agent trace evaluation
-│   ├── benchmark.py    ← Benchmark runner
-│   ├── leaderboard.py  ← Multi-model leaderboard
-│   └── paper_generator.py ← Research paper generator
-├── proxy/              ← Middleware proxy layer
-│   ├── sdk.py          ← Python SDK (2-line integration)
-│   ├── server.py       ← FastAPI proxy (port 8001)
-│   ├── providers.py    ← OpenAI/Anthropic/Gemini/Ollama
-│   └── database.py     ← SQLite evaluation logs
-├── api/                ← Main API server (port 8000)
-├── dashboard/          ← React dashboard (port 5173)
-├── tests/              ← 36 unit tests
-├── paper/              ← Research paper draft
-├── start.bat           ← Windows: one-click start
-├── start.sh            ← Mac/Linux: one-click start
-└── GETTING_STARTED.md  ← Full setup guide
+├── truthlens/              ← Core evaluation library
+│   ├── evaluator.py        ← 5-metric trust scoring
+│   ├── claims.py           ← Claim-level verification
+│   ├── rag.py              ← RAG pipeline evaluation
+│   ├── agent.py            ← Agent trace evaluation
+│   ├── benchmark.py        ← Benchmark runner
+│   ├── leaderboard.py      ← Multi-model leaderboard
+│   └── paper_generator.py  ← Research paper generator
+├── proxy/                  ← Middleware proxy layer
+│   ├── sdk.py               ← Python SDK (2-line integration)
+│   ├── server.py             ← FastAPI proxy (port 8001)
+│   ├── providers.py          ← OpenAI/Anthropic/Gemini/Ollama
+│   └── database.py           ← SQLite evaluation logs
+├── api/                    ← Main API server (port 8000)
+├── dashboard/               ← React dashboard (port 5173)
+├── tests/                  ← 36 unit tests
+├── paper/                  ← Research paper draft
+├── start.bat                ← Windows: one-click start
+├── start.sh                 ← Mac/Linux: one-click start
+└── GETTING_STARTED.md      ← Full setup guide
 ```
 
 ---
 
-## Contributing
+## 🤝 Contributing
 
 1. Fork the repo
 2. Create your branch: `git checkout -b feature/my-feature`
@@ -208,6 +216,14 @@ truthlens/
 
 ---
 
-## License
+## 📜 License
 
 MIT © TruthLens Contributors
+
+<div align="center">
+
+---
+
+Built by **Rishi Prasad Vagu**
+
+</div>
